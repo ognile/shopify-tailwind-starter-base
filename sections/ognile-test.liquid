@@ -1,6 +1,146 @@
 {% schema %}
-  {
-    "name": "Section name",
-    "settings": []
-  }
+{
+  "name": "Testimonial Video Slider",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading_text",
+      "label": "Heading Text",
+      "default": "What Happy Shoppers Are Saying"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background Color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "arrow_color",
+      "label": "Navigation Arrow Color",
+      "default": "#000000"
+    },
+    {
+      "type": "color",
+      "id": "active_dot_color",
+      "label": "Active Dot Color",
+      "default": "#000000"
+    },
+    {
+      "type": "color",
+      "id": "inactive_dot_color",
+      "label": "Inactive Dot Color",
+      "default": "#cccccc"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "video_slide",
+      "name": "Video Slide",
+      "settings": [
+        {
+          "type": "url",
+          "id": "video_url",
+          "label": "Video URL"
+        },
+        {
+          "type": "image_picker",
+          "id": "poster_image",
+          "label": "Poster Image"
+        },
+        {
+          "type": "text",
+          "id": "video_caption",
+          "label": "Video Caption"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Testimonial Video Slider",
+      "category": "Custom Sections"
+    }
+  ]
+}
+
 {% endschema %}
+
+{% comment %}
+  Testimonial Video Slider Section
+{% endcomment %}
+<div class="testimonial-slider" style="background-color: {{ section.settings.background_color }};">
+  <h2>{{ section.settings.heading_text }}</h2>
+  <div class="slider">
+    {% for block in section.blocks %}
+      <div class="slide">
+        <video src="{{ block.settings.video_url }}" controls poster="{{ block.settings.poster_image }}">
+          Your browser does not support the video tag.
+        </video>
+        <div class="caption">{{ block.settings.video_caption }}</div>
+      </div>
+    {% endfor %}
+  </div>
+  <div class="navigation">
+    <span class="prev" style="color: {{ section.settings.arrow_color }};">&#10094;</span>
+    <span class="next" style="color: {{ section.settings.arrow_color }};">&#10095;</span>
+  </div>
+  <div class="pagination">
+    {% for i in (0..section.blocks.size) %}
+      <span class="dot" data-slide="{{ i }}" style="background-color: {% if i == 0 %}{{ section.settings.active_dot_color }}{% else %}{{ section.settings.inactive_dot_color }}{% endif %};"></span>
+    {% endfor %}
+  </div>
+</div>
+
+<style>
+  .testimonial-slider { text-align: center; padding: 20px; }
+  .slider { position: relative; }
+  .slide { display: none; }
+  .slide video { width: 100%; height: auto; }
+  .navigation { position: absolute; width: 100%; top: 50%; transform: translateY(-50%); display: flex; justify-content: space-between; }
+  .pagination { text-align: center; margin-top: 20px; }
+  .dot { height: 10px; width: 10px; margin: 0 2px; display: inline-block; border-radius: 50%; }
+</style>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    let slides = document.querySelectorAll('.slide');
+    let currentSlide = 0;
+    let slideInterval = setInterval(nextSlide, 5000);
+
+    function nextSlide() {
+      slides[currentSlide].style.display = 'none';
+      currentSlide = (currentSlide + 1) % slides.length;
+      slides[currentSlide].style.display = 'block';
+    }
+
+    let playing = true;
+    let slider = document.querySelector('.slider');
+    slider.onmouseover = function() {
+      clearInterval(slideInterval);
+    };
+    slider.onmouseout = function() {
+      if (playing) {
+        slideInterval = setInterval(nextSlide, 5000);
+      }
+    };
+
+    document.querySelector('.prev').addEventListener('click', function() {
+      slides[currentSlide].style.display = 'none';
+      currentSlide = (currentSlide - 1 + slides.length) % slides.length;
+      slides[currentSlide].style.display = 'block';
+    });
+
+    document.querySelector('.next').addEventListener('click', function() {
+      nextSlide();
+    });
+
+    document.querySelectorAll('.dot').forEach(function(dot, index) {
+      dot.addEventListener('click', function() {
+        slides[currentSlide].style.display = 'none';
+        currentSlide = index;
+        slides[currentSlide].style.display = 'block';
+      });
+    });
+  });
+</script>
