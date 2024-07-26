@@ -1,116 +1,188 @@
-<!-- section-testimonials.liquid -->
-<section id="testimonials" class="testimonial-carousel">
-  <h2>What Happy Shoppers Are Saying</h2>
-  <div class="carousel">
-    {% for testimonial in testimonials %}
-      <div class="testimonial-item{% if forloop.first %} active{% endif %}">
-        <video controls>
-          <source src="{{ testimonial.video_url }}" type="video/mp4">
-          Your browser does not support the video tag.
-        </video>
-        <p>{{ testimonial.caption }}</p>
-      </div>
+<!-- sections/testimonial-slider.liquid -->
+{{ 'video-section.css' | asset_url | stylesheet_tag }}
+{{ 'component-deferred-media.css' | asset_url | stylesheet_tag }}
+
+{%- style -%}
+  .section-{{ section.id }}-padding {
+    padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
+    padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
+  }
+
+  @media screen and (min-width: 750px) {
+    .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
+    }
+  }
+{%- endstyle -%}
+
+<div class="testimonial-slider-section color-{{ section.settings.color_scheme }} gradient section-{{ section.id }}-padding">
+  <div class="testimonial-slider-title page-width">
+    <h2 class="title inline-richtext {{ section.settings.heading_size }}">{{ section.settings.heading }}</h2>
+  </div>
+  <div class="testimonial-slider-videos page-width">
+    {% for block in section.blocks %}
+      <deferred-media
+        class="testimonial-slider-video deferred-media gradient global-media-settings media-fit-cover{% if section.settings.full_width %} global-media-settings--full-width{% endif %}"
+        data-media-id="{{ block.settings.video_id }}"
+        {% if block.settings.thumbnail != null %}
+          style="--ratio-percent: {{ 1 | divided_by: block.settings.thumbnail.aspect_ratio | times: 100 }}%;"
+        {% endif %}
+      >
+        <button
+          id="Deferred-Poster-Modal-{{ block.settings.video_id }}"
+          class="testimonial-slider-poster media deferred-media__poster media--landscape"
+          type="button"
+          aria-label="{{ block.settings.video_alt }}"
+        >
+          {%- if block.settings.thumbnail != null -%}
+            {{
+              block.settings.thumbnail
+              | image_url: width: 3840
+              | image_tag: sizes: sizes, widths: '375, 750, 1100, 1500, 1780, 2000, 3000, 3840', alt: block.settings.video_alt
+            }}
+          {%- else -%}
+            {{ 'hero-apparel-3' | placeholder_svg_tag: 'placeholder-svg placeholder' }}
+          {%- endif -%}
+          <span class="deferred-media__poster-button motion-reduce">
+            {%- render 'icon-play' -%}
+          </span>
+        </button>
+        <template>
+          {%- if block.settings.video_type == 'youtube' -%}
+            <iframe
+              src="https://www.youtube.com/embed/{{ block.settings.video_id }}?enablejsapi=1&autoplay=1"
+              class="js-youtube"
+              allow="autoplay; encrypted-media"
+              allowfullscreen
+              title="{{ block.settings.video_alt | escape }}"
+            ></iframe>
+          {%- else -%}
+            <iframe
+              src="https://player.vimeo.com/video/{{ block.settings.video_id }}?autoplay=1"
+              class="js-vimeo"
+              allow="autoplay; encrypted-media"
+              allowfullscreen
+              title="{{ block.settings.video_alt | escape }}"
+            ></iframe>
+          {%- endif -%}
+        </template>
+      </deferred-media>
     {% endfor %}
   </div>
-  <div class="carousel-navigation">
-    <button class="prev">&lt;</button>
-    <button class="next">&gt;</button>
+  <div class="testimonial-slider-navigation">
+    <button class="testimonial-slider-nav testimonial-slider-nav-prev">&larr;</button>
+    <button class="testimonial-slider-nav testimonial-slider-nav-next">&rarr;</button>
   </div>
-  <div class="pagination-dots">
-    {% for testimonial in testimonials %}
-      <span class="dot{% if forloop.first %} active{% endif %}"></span>
-    {% endfor %}
-  </div>
+</div>
 
-  <style>
-    /* CSS Styling */
-    #testimonials {
-      text-align: center;
+{% schema %}
+{
+  "name": "Testimonial Slider",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Section Title",
+      "default": "What Happy Shoppers Are Saying"
+    },
+    {
+      "type": "select",
+      "id": "heading_size",
+      "label": "Heading Size",
+      "options": [
+        {
+          "value": "h2",
+          "label": "H2"
+        },
+        {
+          "value": "h1",
+          "label": "H1"
+        },
+        {
+          "value": "h0",
+          "label": "H0"
+        }
+      ],
+      "default": "h2"
+    },
+    {
+      "type": "checkbox",
+      "id": "full_width",
+      "label": "Full Width",
+      "default": false
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "Color Scheme",
+      "default": "scheme-1"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "Padding Top",
+      "default": 36
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "Padding Bottom",
+      "default": 36
     }
-
-    .testimonial-carousel {
-      position: relative;
+  ],
+  "blocks": [
+    {
+      "type": "video",
+      "name": "Video",
+      "settings": [
+        {
+          "type": "url",
+          "id": "video_url",
+          "label": "Video URL"
+        },
+        {
+          "type": "select",
+          "id": "video_type",
+          "label": "Video Type",
+          "options": [
+            {
+              "value": "youtube",
+              "label": "YouTube"
+            },
+            {
+              "value": "vimeo",
+              "label": "Vimeo"
+            }
+          ],
+          "default": "youtube"
+        },
+        {
+          "type": "image_picker",
+          "id": "thumbnail",
+          "label": "Thumbnail Image"
+        },
+        {
+          "type": "text",
+          "id": "video_alt",
+          "label": "Video Alt Text"
+        }
+      ]
     }
-
-    .testimonial-item {
-      display: none;
+  ],
+  "presets": [
+    {
+      "name": "Testimonial Slider",
+      "category": "Custom Sections"
     }
-
-    .testimonial-item.active {
-      display: block;
-    }
-
-    .carousel-navigation button {
-      position: absolute;
-      top: 50%;
-      transform: translateY(-50%);
-      background: none;
-      border: none;
-      font-size: 2rem;
-      cursor: pointer;
-    }
-
-    .carousel-navigation .prev {
-      left: 0;
-    }
-
-    .carousel-navigation .next {
-      right: 0;
-    }
-
-    .pagination-dots {
-      text-align: center;
-      margin-top: 10px;
-    }
-
-    .pagination-dots .dot {
-      display: inline-block;
-      width: 10px;
-      height: 10px;
-      background-color: #ccc;
-      border-radius: 50%;
-      margin: 0 5px;
-      cursor: pointer;
-    }
-
-    .pagination-dots .dot.active {
-      background-color: #000;
-    }
-  </style>
-
-  <script>
-    // JavaScript Functionality
-    document.addEventListener('DOMContentLoaded', function () {
-      const testimonials = document.querySelectorAll('.testimonial-item');
-      const prevButton = document.querySelector('.carousel-navigation .prev');
-      const nextButton = document.querySelector('.carousel-navigation .next');
-      const dots = document.querySelectorAll('.pagination-dots .dot');
-      let currentIndex = 0;
-
-      function showTestimonial(index) {
-        testimonials.forEach((item, i) => {
-          item.classList.toggle('active', i === index);
-          dots[i].classList.toggle('active', i === index);
-        });
-      }
-
-      function showNextTestimonial() {
-        currentIndex = (currentIndex + 1) % testimonials.length;
-        showTestimonial(currentIndex);
-      }
-
-      function showPrevTestimonial() {
-        currentIndex = (currentIndex - 1 + testimonials.length) % testimonials.length;
-        showTestimonial(currentIndex);
-      }
-
-      nextButton.addEventListener('click', showNextTestimonial);
-      prevButton.addEventListener('click', showPrevTestimonial);
-      dots.forEach((dot, index) => {
-        dot.addEventListener('click', () => showTestimonial(index));
-      });
-
-      showTestimonial(currentIndex);
-    });
-  </script>
-</section>
+  ]
+}
+{% endschema %}
