@@ -223,39 +223,25 @@
     "ognile_test_8kXcyD": {
       "type": "ognile-test",
       "blocks": {
-        "video_slide_tJLF9N": {
-          "type": "video_slide",
+        "video_mWwWRU": {
+          "type": "video",
           "settings": {
-            "video_url": "https:\/\/www.youtube.com\/watch?v=avWlm-rF1b0",
-            "video_caption": ""
-          }
-        },
-        "video_slide_DxRhKT": {
-          "type": "video_slide",
-          "settings": {
-            "video_url": "https:\/\/www.youtube.com\/watch?v=avWlm-rF1b0",
-            "video_caption": ""
-          }
-        },
-        "video_slide_JCYbP8": {
-          "type": "video_slide",
-          "settings": {
-            "video_url": "",
-            "video_caption": ""
+            "video_url": "https:\/\/www.youtube.com\/watch?v=W10cztB9rvw",
+            "video_type": "youtube",
+            "video_alt": ""
           }
         }
       },
       "block_order": [
-        "video_slide_tJLF9N",
-        "video_slide_DxRhKT",
-        "video_slide_JCYbP8"
+        "video_mWwWRU"
       ],
       "settings": {
-        "heading_text": "What Happy Shoppers Are Saying",
-        "background_color": "#ffffff",
-        "arrow_color": "#000000",
-        "active_dot_color": "#000000",
-        "inactive_dot_color": "#cccccc"
+        "heading": "What Happy Shoppers Are Saying",
+        "heading_size": "h2",
+        "full_width": false,
+        "color_scheme": "",
+        "padding_top": 36,
+        "padding_bottom": 36
       }
     }
   },
