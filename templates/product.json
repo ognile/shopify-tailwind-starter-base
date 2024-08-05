@@ -1,3 +1,12 @@
+/*
+* ------------------------------------------------------------
+* IMPORTANT: The contents of this file are auto-generated.
+*
+* This file may be updated by the Shopify admin theme editor
+* or related systems. Please exercise caution as any changes
+* made to this file may be overwritten.
+* ------------------------------------------------------------
+*/
 {
   "sections": {
     "main": {
@@ -11,7 +20,9 @@
           }
         },
         "title": {
-          "type": "title"
+          "type": "title",
+          "settings": {
+          }
         },
         "caption": {
           "type": "text",
@@ -21,16 +32,21 @@
           }
         },
         "price": {
-          "type": "price"
+          "type": "price",
+          "settings": {
+          }
         },
         "variant_picker": {
           "type": "variant_picker",
           "settings": {
-            "picker_type": "button"
+            "picker_type": "button",
+            "swatch_shape": "circle"
           }
         },
         "quantity_selector": {
-          "type": "quantity_selector"
+          "type": "quantity_selector",
+          "settings": {
+          }
         },
         "buy_buttons": {
           "type": "buy_buttons",
@@ -40,48 +56,14 @@
           }
         },
         "description": {
-          "type": "description"
-        },
-        "collapsible-row-0": {
-          "type": "collapsible_tab",
+          "type": "description",
           "settings": {
-            "heading": "Materials",
-            "icon": "leather",
-            "content": "",
-            "page": ""
           }
         },
-        "collapsible-row-1": {
-          "type": "collapsible_tab",
+        "custom_liquid_gePYUt": {
+          "type": "custom_liquid",
           "settings": {
-            "heading": "Shipping & Returns",
-            "icon": "truck",
-            "content": "",
-            "page": ""
-          }
-        },
-        "collapsible-row-2": {
-          "type": "collapsible_tab",
-          "settings": {
-            "heading": "Dimensions",
-            "icon": "ruler",
-            "content": "",
-            "page": ""
-          }
-        },
-        "collapsible-row-3": {
-          "type": "collapsible_tab",
-          "settings": {
-            "heading": "Care Instructions",
-            "icon": "heart",
-            "content": "",
-            "page": ""
-          }
-        },
-        "share": {
-          "type": "share",
-          "settings": {
-            "share_label": "Share"
+            "custom_liquid": "<div class=\"section-template--22739546931493__image_slider_k8QJ8h-padding color-background-1 content-for-grouping animate-section animate--hidden always-display animate--shown\">\n  <div class=\"page-width\">\n    <div id=\"splide02\" class=\"splide\">\n      <div class=\"splide__track\">\n        <ul class=\"splide__list\">\n          <!-- Video 1 -->\n          <li class=\"splide__slide\">\n            <div class=\"image-slide animate-item animate-item--child\">\n              <div class=\"image-slide__image\">\n                <div class=\"video-container\">\n                  <video width=\"100%\" height=\"auto\" preload=\"metadata\" poster=\"\/\/holistichercules.com\/cdn\/shop\/files\/videoframe_16460.png?v=1720653129\" loop muted playsinline disablepictureinpicture>\n                    <source src=\"\/\/holistichercules.com\/cdn\/shop\/videos\/c\/vp\/20bc5c76533642aa84281cc6015453c9\/20bc5c76533642aa84281cc6015453c9.HD-720p-1.6Mbps-30863608.mp4?v=0\" type=\"video\/mp4\">\n                  <\/video>\n                <\/div>\n              <\/div>\n            <\/div>\n          <\/li>\n          <!-- Video 2 -->\n          <li class=\"splide__slide\">\n            <div class=\"image-slide animate-item animate-item--child\">\n              <div class=\"image-slide__image\">\n                <div class=\"video-container\">\n                  <video width=\"100%\" height=\"auto\" preload=\"metadata\" poster=\"\/\/holistichercules.com\/cdn\/shop\/files\/videoframe_18626.png?v=1720652674\" playsinline disablepictureinpicture>\n                    <source src=\"\/\/holistichercules.com\/cdn\/shop\/videos\/c\/vp\/b5e4590d390b4ddd81aa5e6a4ddac3a9\/b5e4590d390b4ddd81aa5e6a4ddac3a9.HD-720p-1.6Mbps-31544993.mp4?v=0\" type=\"video\/mp4\">\n                  <\/video>\n                <\/div>\n              <\/div>\n            <\/div>\n          <\/li>\n          <!-- Video 3 -->\n          <li class=\"splide__slide\">\n            <div class=\"image-slide animate-item animate-item--child\">\n              <div class=\"image-slide__image\">\n                <div class=\"video-container\">\n                  <video width=\"100%\" height=\"auto\" preload=\"metadata\" poster=\"\/\/holistichercules.com\/cdn\/shop\/files\/videoframe_97274.png?v=1720652872\" playsinline disablepictureinpicture>\n                    <source src=\"\/\/holistichercules.com\/cdn\/shop\/videos\/c\/vp\/332177586474413b8119a509f276b966\/332177586474413b8119a509f276b966.HD-720p-1.6Mbps-30863565.mp4?v=0\" type=\"video\/mp4\">\n                  <\/video>\n                <\/div>\n              <\/div>\n            <\/div>\n          <\/li>\n          <!-- Video 4 -->\n          <li class=\"splide__slide\">\n            <div class=\"image-slide animate-item animate-item--child\">\n              <div class=\"image-slide__image\">\n                <div class=\"video-container\">\n                  <video width=\"100%\" height=\"auto\" preload=\"metadata\" poster=\"\/\/holistichercules.com\/cdn\/shop\/files\/videoframe_15194.png?v=1720652973\" playsinline disablepictureinpicture>\n                    <source src=\"\/\/holistichercules.com\/cdn\/shop\/videos\/c\/vp\/de8e0083bd8445eab775967a5acc77b1\/de8e0083bd8445eab775967a5acc77b1.HD-720p-1.6Mbps-30863780.mp4?v=0\" type=\"video\/mp4\">\n                  <\/video>\n                <\/div>\n              <\/div>\n            <\/div>\n          <\/li>\n        <\/ul>\n      <\/div>\n      <div class=\"splide__arrows splide__arrows--ltr\">\n        <button class=\"splide__arrow splide__arrow--prev\" type=\"button\" aria-label=\"Previous slide\">\n          <svg xmlns=\"http:\/\/www.w3.org\/2000\/svg\" viewBox=\"0 0 40 40\" width=\"40\" height=\"40\" focusable=\"false\">\n            <path d=\"m15.5 0.932-4.3 4.38 14.5 14.6-14.5 14.5 4.3 4.4 14.6-14.6 4.4-4.3-4.4-4.4-14.6-14.6z\"><\/path>\n          <\/svg>\n        <\/button>\n        <button class=\"splide__arrow splide__arrow--next\" type=\"button\" aria-label=\"Next slide\">\n          <svg xmlns=\"http:\/\/www.w3.org\/2000\/svg\" viewBox=\"0 0 40 40\" width=\"40\" height=\"40\" focusable=\"false\">\n            <path d=\"m15.5 0.932-4.3 4.38 14.5 14.6-14.5 14.5 4.3 4.4 14.6-14.6 4.4-4.3-4.4-4.4-14.6-14.6z\"><\/path>\n          <\/svg>\n        <\/button>\n      <\/div>\n      <ul class=\"splide__pagination splide__pagination--ltr\" role=\"tablist\" aria-label=\"Select a slide to show\"><\/ul>\n    <\/div>\n  <\/div>\n<\/div>\n\n<style>\n  .video-container {\n    position: relative;\n    width: 100%;\n    overflow: hidden;\n  }\n  .splide__slide video {\n    width: 100%;\n    height: auto;\n  }\n  .splide__arrow, .splide__pagination__page {\n    background: #000;\n    color: #fff;\n  }\n  .splide__arrow:hover, .splide__pagination__page:hover {\n    background: #fff;\n    color: #000;\n  }\n<\/style>\n\n<script>\n  document.addEventListener('DOMContentLoaded', function () {\n    new Splide('#splide02', {\n      type       : 'loop',\n      perPage    : 2, \/\/ Adjust the number of videos per page\n      gap        : '12px',\n      autoplay   : true,\n      interval   : 5000, \/\/ 5 seconds\n      arrows     : true,\n      pagination : true,\n      breakpoints: {\n        750: {\n          perPage: 1,\n          gap    : '8px',\n        },\n      },\n    }).mount();\n  });\n<\/script>"
           }
         }
       },
@@ -94,17 +76,17 @@
         "quantity_selector",
         "buy_buttons",
         "description",
-        "collapsible-row-0",
-        "collapsible-row-1",
-        "collapsible-row-2",
-        "collapsible-row-3",
-        "share"
+        "custom_liquid_gePYUt"
       ],
       "settings": {
         "enable_sticky_info": true,
-        "gallery_layout": "stacked",
+        "color_scheme": "",
         "media_size": "large",
         "constrain_to_viewport": true,
+        "media_fit": "contain",
+        "gallery_layout": "stacked",
+        "media_position": "left",
+        "image_zoom": "lightbox",
         "mobile_thumbnails": "hide",
         "hide_variants": true,
         "enable_video_looping": false,
@@ -141,7 +123,9 @@
         "desktop_content_position": "top",
         "desktop_content_alignment": "left",
         "content_layout": "no-overlap",
+        "section_color_scheme": "",
         "color_scheme": "scheme-2",
+        "image_behavior": "none",
         "mobile_content_alignment": "left",
         "padding_top": 36,
         "padding_bottom": 36
@@ -183,9 +167,9 @@
         "background_style": "none",
         "button_label": "",
         "button_link": "",
-        "swipe_on_mobile": false,
         "color_scheme": "scheme-1",
         "columns_mobile": "1",
+        "swipe_on_mobile": false,
         "padding_top": 36,
         "padding_bottom": 36
       }
@@ -195,9 +179,11 @@
       "settings": {
         "heading": "You may also like",
         "heading_size": "h2",
+        "products_to_show": 4,
         "columns_desktop": 4,
         "color_scheme": "scheme-1",
         "image_ratio": "square",
+        "image_shape": "default",
         "show_secondary_image": true,
         "show_vendor": false,
         "show_rating": false,
